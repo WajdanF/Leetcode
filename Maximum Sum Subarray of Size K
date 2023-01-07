@@ -1,11 +1,15 @@
+#comment the code
 def maxSubsequence(self, nums: List[int], k: int) -> List[int]:
-    start = 0
-    maxSum, currentSum = 0, 0
-    for i in range(len(nums)):
-        currentSum += nums[i]
-        if i >= k-1:
-            maxSum = max(currentSum, maxSum)
-            currentSum -= nums[start]
-            start += 1
+    start = 0  # start of the window    
+    maxSum, currentSum = 0, 0 # maxSum and currentSum of the window
+    for i in range(len(nums)): # iterate through the array
+        currentSum += nums[i] # add the current element to the currentSum
+        if i >= k-1: # if the window size is equal to k
+            maxSum = max(currentSum, maxSum) # update the maxSum
+            currentSum -= nums[start] # subtract the first element of the window from the currentSum
+            start += 1 # move the window
 
-    return maxSum
+    return maxSum # return the maxSum
+
+#runtime: O(N) - Only iterate over the list once
+#Space Complexity O(1) - No extra space is needed
