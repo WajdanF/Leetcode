@@ -1,0 +1,11 @@
+def maxSubsequence(self, nums: List[int], k: int) -> List[int]:
+    start = 0
+    maxSum, currentSum = 0, 0
+    for i in range(len(nums)):
+        currentSum += nums[i]
+        if i >= k-1:
+            maxSum = max(currentSum, maxSum)
+            currentSum -= nums[start]
+            start += 1
+
+    return maxSum
